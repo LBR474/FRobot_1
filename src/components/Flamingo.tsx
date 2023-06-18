@@ -10,10 +10,12 @@ interface FlamingoProps {
 }
 
 function Flamingo({ scale }: FlamingoProps) {
+
+  
   let mixer: THREE.AnimationMixer | null = null;
   const { scene, animations } = useLoader(
     GLTFLoader,
-    "/FlamingoPublic.glb"
+    `../src/assets/FlamingoAssets.glb`
   );
   // console.log(scene);
   mixer = new THREE.AnimationMixer(scene);
