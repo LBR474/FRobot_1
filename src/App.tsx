@@ -9,9 +9,9 @@ function App() {
 
   return (
     <>
-    <div className='CanvasPageContainer'>
-      <CanvasPage />
-    </div>
+      <div className="CanvasPageContainer">
+        <CanvasPage />
+      </div>
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -19,7 +19,8 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-      </div>
+      </div> */}
+      {/*
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
@@ -33,7 +34,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p> */}
     </>
-  )
+  );
 }
 
 export default App
