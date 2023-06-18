@@ -18,7 +18,7 @@ function Flamingo({ scale }: FlamingoProps) {
   let mixer: THREE.AnimationMixer | null = null;
   const { scene, animations } = useLoader(
     GLTFLoader,
-   '/Flamingo.glb'
+   'Flamingo.glb'
   );
   // console.log(scene);
   mixer = new THREE.AnimationMixer(scene);
