@@ -12,7 +12,7 @@ interface ParrotProps {
   scale: Vector3;
 }
 
-function Flamingo({ scale }: ParrotProps) {
+function Parrot({ scale }: ParrotProps) {
 
   
   let mixer: THREE.AnimationMixer | null = null;
