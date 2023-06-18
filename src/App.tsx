@@ -2,7 +2,7 @@
 
 import "./App.css";
 
-import CanvasPage from "./CanvasPage";
+import CanvasPage from "./components/CanvasPage";
 
 function App() {
   // const [count, setCount] = useState(0)
