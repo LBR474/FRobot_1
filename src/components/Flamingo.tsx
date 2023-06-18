@@ -5,6 +5,9 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Vector3 } from "three";
 
+
+
+
 interface FlamingoProps {
   scale: Vector3;
 }
@@ -15,7 +18,7 @@ function Flamingo({ scale }: FlamingoProps) {
   let mixer: THREE.AnimationMixer | null = null;
   const { scene, animations } = useLoader(
     GLTFLoader,
-    `/Flamingo.glb`
+    "/Flamingo.glb"
   );
   // console.log(scene);
   mixer = new THREE.AnimationMixer(scene);
