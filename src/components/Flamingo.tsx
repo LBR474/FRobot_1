@@ -13,13 +13,13 @@ function Flamingo({ scale }: FlamingoProps) {
   let mixer: THREE.AnimationMixer | null = null;
   const { scene, animations } = useLoader(
     GLTFLoader,
-    "src/assets/Flamingo.glb"
+    "/FlamingoPublic.glb"
   );
   // console.log(scene);
   mixer = new THREE.AnimationMixer(scene);
   void mixer.clipAction(animations[0]).play();
 
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     mixer!.update(delta);
     // console.log(ca);
   });
