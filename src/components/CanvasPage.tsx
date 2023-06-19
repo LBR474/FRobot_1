@@ -1,4 +1,4 @@
-import { SetStateAction, Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import { Canvas } from "@react-three/fiber";
 
@@ -6,7 +6,7 @@ import Flamingo from "./Flamingo";
 import Parrot from "./Parrot";
 import { Vector3 } from "three";
 
-import { Stats, OrbitControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 
 export default function App() {
   const [scale] = useState(new Vector3(0.1, 0.1, 0.1));
