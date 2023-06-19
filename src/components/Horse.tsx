@@ -22,7 +22,7 @@ function Horse({ scale }: HorseProps) {
   let mixer: THREE.AnimationMixer | null = null;
 
   
-  const gltf = useLoader(GLTFLoader, "PrimaryIonDrive.glb", (loader) => {
+  const gltf = useLoader(GLTFLoader, "Horse.glb", (loader) => {
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath("/node_modules/three/examples/jsm/libs/draco/");
     loader.setDRACOLoader(dracoLoader);

@@ -30,7 +30,7 @@ export default function App() {
         <option value="">Select an item</option>
         <option value="flamingo">Flamingo</option>
         <option value="parrot">Parrot</option>
-        <option value="tokyo">Tokyo</option>
+        {/* <option value="tokyo">Tokyo</option> */}
         <option value="horse">Horse</option>
       </select>{" "}
       <Canvas camera={{ position: [0, 0, 5] }}>
