@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 
 import Flamingo from "./Flamingo";
 import Parrot from "./Parrot";
+import Horse from "./Horse";
 import { Vector3 } from "three";
 
 import { OrbitControls } from "@react-three/drei";
@@ -30,7 +31,7 @@ export default function App() {
         <option value="flamingo">Flamingo</option>
         <option value="parrot">Parrot</option>
         <option value="tokyo">Tokyo</option>
-        <option value="other">Other</option>
+        <option value="horse">Horse</option>
       </select>{" "}
       <Canvas camera={{ position: [0, 0, 5] }}>
         <ambientLight intensity={2} />
@@ -41,14 +42,10 @@ export default function App() {
             <boxGeometry args={[1, 1, 1]} />
             <meshBasicMaterial color={"hotpink"} />
           </mesh>
-          <mesh position={[0, -1, 0]}>
-            <boxGeometry args={[1, 1, 1]} />
-            <meshBasicMaterial color={"hotpink"} />
-          </mesh>
-          {selectedItem === "flamingo" || selectedItem === "other" ? (
-            <Flamingo scale={scale} />
-          ) : null}
+
+          {selectedItem === "flamingo" ? <Flamingo scale={scale} /> : null}
           {selectedItem === "parrot" ? <Parrot scale={scale} /> : null}
+          {selectedItem === "horse" ? <Horse scale={scale} /> : null}
         </Suspense>
         <OrbitControls />
       </Canvas>
