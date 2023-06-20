@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Vector3 } from "three";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
+import { useState } from "react";
 
 
 
@@ -16,7 +17,9 @@ interface HorseProps {
 
 function Horse({ scale }: HorseProps) {
 
-  
+  let [localHScaler, setlocalFScaler] = useState(
+    new Vector3(scale.x * 0.1, scale.y * 0.1, scale.z * 0.1)
+  );
 
   
   let mixer: THREE.AnimationMixer | null = null;
@@ -35,7 +38,7 @@ function Horse({ scale }: HorseProps) {
     mixer!.update(delta);
     // console.log(ca);
   });
-  return <primitive object={gltf.scene} position={[0, 0, 0]} scale={scale} />;
+  return <primitive object={gltf.scene} position={[0, 0, 0]} scale={localHScaler} />;
 }
 
 export default Horse;

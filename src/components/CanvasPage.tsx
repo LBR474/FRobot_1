@@ -10,12 +10,13 @@ import { Vector3 } from "three";
 import { OrbitControls } from "@react-three/drei";
 
 export default function App() {
-  const [scale] = useState(new Vector3(0.1, 0.1, 0.1));
+  let [scale] = useState(new Vector3(0.1, 0.1, 0.1));
   const [selectedItem, setSelectedItem] = useState('');
 
   useEffect(() => {
     // Initial state
     setSelectedItem('');
+    
   }, []);
 
   const handleDropdownChange = (
@@ -48,7 +49,7 @@ export default function App() {
           {selectedItem === "parrot" ? <Parrot scale={scale} /> : null}
           {selectedItem === "horse" ? <Horse scale={scale} /> : null}
         </Suspense>
-        <OrbitControls />
+        <OrbitControls enableZoom={false}/>
       </Canvas>
     </>
   );
