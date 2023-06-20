@@ -38,7 +38,7 @@ export default function App() {
         <ambientLight intensity={2} />
         <pointLight position={[40, 40, 40]} />
 
-        <Suspense fallback={null}>
+        <Suspense key={selectedItem} fallback={null}>
           <mesh position={[0, -1, 0]}>
             <boxGeometry args={[1, 1, 1]} />
             <meshBasicMaterial color={"hotpink"} />
