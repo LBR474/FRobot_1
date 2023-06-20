@@ -22,6 +22,7 @@ export default function App() {
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setSelectedItem(event.target.value);
+    console.log(event.target.value)
   };
 
   return (
