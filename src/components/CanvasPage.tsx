@@ -8,11 +8,18 @@ import gsap from "gsap";
 import { OrbitControls } from "@react-three/drei";
 
 interface SceneProps {
-  FlamingoRef: React.Ref<THREE.Group>;
+  FlamingoRef: React.RefObject<THREE.Group>;
+  ParrotRef: React.RefObject<THREE.Group>;
+  HorseRef: React.RefObject<THREE.Group>;
   selectedItem: string;
 }
 
-const Scene: React.FC<SceneProps> = ({ FlamingoRef, selectedItem }) => {
+const Scene: React.FC<SceneProps> = ({
+  FlamingoRef,
+  ParrotRef,
+  HorseRef,
+  selectedItem,
+}) => {
   const cameraRef = useRef<THREE.Camera>();
 
   useFrame(({ camera }) => {
@@ -36,7 +43,42 @@ const Scene: React.FC<SceneProps> = ({ FlamingoRef, selectedItem }) => {
     resetCameraPosition();
   }, [selectedItem]);
 
-  
+  useEffect(() => {
+    const moveModels = (
+      ref: React.RefObject<THREE.Group>,
+      startPosition: Vector3,
+      endPosition: Vector3
+    ) => {
+      if (ref.current) {
+        gsap.fromTo(
+          ref.current.position,
+          {
+            x: startPosition.x,
+            y: startPosition.y,
+            z: startPosition.z,
+          },
+          {
+            x: endPosition.x,
+            y: endPosition.y,
+            z: endPosition.z,
+            duration: 5,
+          }
+        );
+      }
+    };
+
+    const startPosition = new Vector3(10, 0, 0);
+    const endPosition = new Vector3(-10, 0, 0);
+
+    if (selectedItem === "parrot") {
+      moveModels(ParrotRef, startPosition, endPosition);
+    } else if (selectedItem === "horse") {
+      moveModels(HorseRef, startPosition, endPosition);
+    } else if (selectedItem === "flamingo") {
+      moveModels(FlamingoRef, startPosition, endPosition);
+    }
+
+  }, [selectedItem, ParrotRef, HorseRef, FlamingoRef]);
 
   return (
     <>
@@ -48,16 +90,28 @@ const Scene: React.FC<SceneProps> = ({ FlamingoRef, selectedItem }) => {
           <boxGeometry args={[1, 1, 1]} />
           <meshBasicMaterial color={"hotpink"} />
         </mesh>
-        <group ref={FlamingoRef} position={[10, 0, 0]}>
+        <group
+          ref={FlamingoRef}
+          position={selectedItem === "flamingo" ? [10, 0, 0] : [10, 0, 0]}
+        >
           {selectedItem === "flamingo" && (
-            <Flamingo scale={new Vector3(0.1, 0.1, 0.1)} />
+            <Flamingo scale={new Vector3(0.02, 0.02, 0.02)} />
           )}
+        </group>
+        <group
+          ref={ParrotRef}
+          position={selectedItem === "parrot" ? [10, 0, 0] : [10, 0, 0]}
+        >
           {selectedItem === "parrot" && (
             <Parrot scale={new Vector3(0.1, 0.1, 0.1)} />
           )}
+        </group>
+        <group
+          ref={HorseRef}
+          position={selectedItem === "horse" ? [10, 0, 0] : [10, 0, 0]}
+        >
           {selectedItem === "horse" && (
             <Horse scale={new Vector3(0.1, 0.1, 0.1)} />
-            
           )}
         </group>
       </Suspense>
@@ -66,29 +120,15 @@ const Scene: React.FC<SceneProps> = ({ FlamingoRef, selectedItem }) => {
   );
 };
 
-export default function App(  ) {
+export default function App() {
   const [selectedItem, setSelectedItem] = useState("");
   const FlamingoRef = useRef<THREE.Group>(null);
-  
+  const ParrotRef = useRef<THREE.Group>(null);
+  const HorseRef = useRef<THREE.Group>(null);
 
   const handleDropdownChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    const newPosition = new Vector3(-10, 0, 0);
-    gsap.to(FlamingoRef.current!.position, {
-      x: newPosition.x,
-      y: newPosition.y,
-      z: newPosition.z,
-      duration: 5,
-      onComplete: () => {
-        // Reset newPosition
-        newPosition.x = 0;
-        newPosition.y = 0;
-        newPosition.z = 0;
-
-        
-      },
-    });
     const value = event.target.value;
     setSelectedItem(value);
   };
@@ -105,9 +145,13 @@ export default function App(  ) {
         <option value="parrot">Parrot</option>
         <option value="horse">Horse</option>
       </select>{" "}
-      <Canvas camera={{ position: [0, 0, 5] }} >
-        <Scene FlamingoRef={FlamingoRef} selectedItem={selectedItem} />
-        
+      <Canvas camera={{ position: [0, 0, 5] }}>
+        <Scene
+          FlamingoRef={FlamingoRef}
+          ParrotRef={ParrotRef}
+          HorseRef={HorseRef}
+          selectedItem={selectedItem}
+        />
       </Canvas>
     </>
   );
