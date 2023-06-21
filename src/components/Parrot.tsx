@@ -14,6 +14,7 @@ import { useAnimations } from "@react-three/drei";
 
 interface ParrotProps {
   scale: Vector3;
+  className?: string; // Add className prop
 }
 
 function Parrot({ scale }: ParrotProps) {
@@ -31,14 +32,7 @@ function Parrot({ scale }: ParrotProps) {
   useEffect(() => {
     actions[names[0]]?.play();
   });
-  // // console.log(scene);
-  // mixer = new THREE.AnimationMixer(scene);
-  // void mixer.clipAction(animations[0]).play();
-
-  // useFrame((_state, delta) => {
-  //   mixer!.update(delta);
-  //   // console.log(ca);
-  // });
+ 
   return <primitive object={scene} position={[0, 0, 0]} scale={scale} />;
 }
 

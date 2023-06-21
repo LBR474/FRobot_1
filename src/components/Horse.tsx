@@ -13,11 +13,12 @@ import { useState } from "react";
 
 interface HorseProps {
   scale: Vector3;
+  className?: string; // Add className prop
 }
 
 function Horse({ scale }: HorseProps) {
 
-  let [localHScaler, setlocalFScaler] = useState(
+  let [localHScaler] = useState(
     new Vector3(scale.x * 0.1, scale.y * 0.1, scale.z * 0.1)
   );
 

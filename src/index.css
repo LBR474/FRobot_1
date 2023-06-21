@@ -38,6 +38,11 @@ body {
   background-color: #bfe3dd;
 }
 
+.Flamingo {
+  opacity: 0;
+  
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
