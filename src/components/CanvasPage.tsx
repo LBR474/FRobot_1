@@ -85,7 +85,7 @@ const Scene: React.FC<SceneProps> = ({
       <ambientLight intensity={2} />
       <pointLight position={[40, 40, 40]} />
 
-      <Suspense fallback={null}>
+      
         <mesh position={[0, -1, 0]}>
           <boxGeometry args={[1, 1, 1]} />
           <meshBasicMaterial color={"hotpink"} />
@@ -114,7 +114,7 @@ const Scene: React.FC<SceneProps> = ({
             <Horse scale={new Vector3(0.1, 0.1, 0.1)} />
           )}
         </group>
-      </Suspense>
+      
       <OrbitControls enableZoom={false} />
     </>
   );
@@ -146,12 +146,14 @@ export default function App() {
         <option value="horse">Horse</option>
       </select>{" "}
       <Canvas camera={{ position: [0, 0, 5] }}>
-        <Scene
-          FlamingoRef={FlamingoRef}
-          ParrotRef={ParrotRef}
-          HorseRef={HorseRef}
-          selectedItem={selectedItem}
-        />
+        
+          <Scene
+            FlamingoRef={FlamingoRef}
+            ParrotRef={ParrotRef}
+            HorseRef={HorseRef}
+            selectedItem={selectedItem}
+          />
+        
       </Canvas>
     </>
   );
