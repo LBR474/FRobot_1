@@ -6,14 +6,13 @@ import { Vector3 } from "three";
 import { useEffect } from "react";
 import { useAnimations } from "@react-three/drei";
 
-interface HorseProps {
+interface PionProps {
   scale: Vector3;
   className?: string; // Add className prop
 }
 
-function Horse({ scale }: HorseProps) {
-  
-  const { scene, animations } = useLoader(GLTFLoader, "Horse.glb");
+function PIon({ scale }: PionProps) {
+  const { scene, animations } = useLoader(GLTFLoader, "PrimaryIonDrive.glb");
 
   const { actions, names } = useAnimations(animations, scene);
 
@@ -24,4 +23,4 @@ function Horse({ scale }: HorseProps) {
   return <primitive object={scene} position={[0, 0, 0]} scale={scale} />;
 }
 
-export default Horse;
+export default PIon;

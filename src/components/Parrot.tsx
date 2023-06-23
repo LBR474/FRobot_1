@@ -1,16 +1,10 @@
-
-
 import { useLoader } from "@react-three/fiber";
 //import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Vector3 } from "three";
 
-
 import { useEffect } from "react";
 import { useAnimations } from "@react-three/drei";
-
-
-
 
 interface ParrotProps {
   scale: Vector3;
@@ -18,21 +12,15 @@ interface ParrotProps {
 }
 
 function Parrot({ scale }: ParrotProps) {
-
-  
-  //let mixer: THREE.AnimationMixer | null = null;
-  const { scene, animations } = useLoader(
-    GLTFLoader,
-   'Parrot.glb'
-  );
+ 
+  const { scene, animations } = useLoader(GLTFLoader, "Parrot.glb");
 
   const { actions, names } = useAnimations(animations, scene);
-  console.log("Names (from Parrot_1): ", names, "Actions: ", actions);
-
+  
   useEffect(() => {
     actions[names[0]]?.play();
   });
- 
+
   return <primitive object={scene} position={[0, 0, 0]} scale={scale} />;
 }
 
