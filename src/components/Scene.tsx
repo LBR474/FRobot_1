@@ -83,9 +83,9 @@ export const Scene: React.FC<SceneProps> = ({
     });
   }, [selectedItem]);
 
-  const [depthG] = useState(0.5);
-  const [widthG] = useState(0.5);
-  const [heightG] = useState(0.5);
+  const [depthG] = useState(0.1);
+  const [widthG] = useState(0.1);
+  const [heightG] = useState(0.1);
 
   useEffect(() => {
     if (modelBounds[selectedItem]) {
